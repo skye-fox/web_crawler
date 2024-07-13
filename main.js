@@ -1,5 +1,6 @@
 import process from 'node:process';
 import { crawlPage } from './crawl.js';
+import { printReport } from './report.js';
 
 async function main() {
   if (process.argv.length < 3) {
@@ -12,7 +13,7 @@ async function main() {
     return;
   } else {
     const result = await crawlPage(process.argv[2]);
-    console.log(`Current page counts: ${JSON.stringify(result, null, 2)}`);
+    printReport(result);
   }
 }
 
