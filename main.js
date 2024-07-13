@@ -1,8 +1,7 @@
-//import { stdin as input, stdout as output, argv, exit } from 'node:process';
 import process from 'node:process';
 import { crawlPage } from './crawl.js';
 
-function main() {
+async function main() {
   if (process.argv.length < 3) {
     console.log('Please enter the url of the site you would like to crawl.');
     return;
@@ -12,9 +11,8 @@ function main() {
     );
     return;
   } else {
-    console.log(`Starting crawler at ${process.argv[2]}...`);
-    crawlPage(process.argv[2]);
-    //process.exit();
+    const result = await crawlPage(process.argv[2]);
+    console.log(`Current page counts: ${JSON.stringify(result, null, 2)}`);
   }
 }
 
